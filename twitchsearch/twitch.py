@@ -1,9 +1,9 @@
 import imp
 from twitchAPI.twitch import Twitch
-from .settings import MIN_VIEW_COUNT, MINISTREAM_APP_ID, MINISTREAM_APP_SECRET, STREAM_LANGUAGE
+from .settings import MIN_VIEW_COUNT, TWITCH_SPOTLIGHT_APP_ID, TWITCH_SPOTLIGHT_APP_SECRET, STREAM_LANGUAGE
 
 def get_streams(max_streams = 500, language = STREAM_LANGUAGE):
-    twitch = Twitch(MINISTREAM_APP_ID, MINISTREAM_APP_SECRET)
+    twitch = Twitch(TWITCH_SPOTLIGHT_APP_ID, TWITCH_SPOTLIGHT_APP_SECRET)
 
     response = twitch.get_streams(language=[STREAM_LANGUAGE], first=100)
 

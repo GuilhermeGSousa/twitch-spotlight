@@ -12,18 +12,18 @@ This project provides a django server that allows you to setup such a web app fo
 ## Setup
 -------------
 ### Twitch API
-The first step is to setup the Twitch API app keys. You can do so by setting up the environment variables `MINISTREAM_APP_ID` and `MINISTREAM_APP_SECRET`. You can generate you keys on the [Twitch developper console](https://dev.twitch.tv/console/apps).
+The first step is to setup the Twitch API app keys. You can do so by setting up the environment variables `TWITCH_SPOTLIGHT_APP_ID` and `TWITCH_SPOTLIGHT_APP_SECRET`. You can generate you keys on the [Twitch developper console](https://dev.twitch.tv/console/apps).
 
 On Windows
 ```bash
-set MINISTREAM_APP_ID=mykeyhere
-set MINISTREAM_APP_SECRET=mysecretkeyhere
+set TWITCH_SPOTLIGHT_APP_ID=mykeyhere
+set TWITCH_SPOTLIGHT_APP_SECRET=mysecretkeyhere
 ```
 
 On Linux
 ```bash
-export MINISTREAM_APP_ID=mykeyhere
-export MINISTREAM_APP_SECRET=mysecretkeyhere
+export TWITCH_SPOTLIGHT_APP_ID=mykeyhere
+export TWITCH_SPOTLIGHT_APP_SECRET=mysecretkeyhere
 ```
 
 ### Install requirements

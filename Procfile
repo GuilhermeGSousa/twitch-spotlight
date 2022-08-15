@@ -1,1 +1,1 @@
-web: gunicorn ministream.wsgi
+web: gunicorn twitchspotlight.wsgi
