@@ -1,0 +1,38 @@
+<div id="clock">
+</div>
+
+<div id="twitch-embed"></div>
+
+<!-- Load the Twitch embed JavaScript file -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+<script type="text/javascript">
+  new Twitch.Embed("twitch-embed", {
+    width: 854,
+    height: 480,
+    channel:"{{ stream_data.streamer_name }}",
+  });
+</script>
+<script type="text/javascript">
+    var span = document.getElementById('clock');
+    function time() 
+    {
+        var stream_start_time = new Date("{{ stream_data.start_time.isoformat }}");
+        var update_time = new Date(stream_start_time.getTime() + {{ time_to_update }} * 60000);
+        var now = new Date();
+        var diff = update_time - now;
+
+        if (diff < 0)
+        {
+          location.reload();
+        }
+
+        const minutes = parseInt(diff / (1000 * 60) % 60);
+        const seconds = parseInt(Math.abs(diff) / (1000) % 60);
+        span.textContent = 
+          ("0" + minutes) + ":" + ("0" + seconds).substr(-2);
+    }
+
+    setInterval(time, 1000);
+</script>

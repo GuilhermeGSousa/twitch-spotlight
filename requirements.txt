@@ -1,0 +1,4 @@
+Django==4.1
+twitchAPI==2.5.7.1
+django-heroku
+gunicorn
