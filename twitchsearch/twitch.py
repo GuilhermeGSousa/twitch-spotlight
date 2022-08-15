@@ -1,5 +1,5 @@
-import imp
 from twitchAPI.twitch import Twitch
+
 from .settings import MIN_VIEW_COUNT, TWITCH_SPOTLIGHT_APP_ID, TWITCH_SPOTLIGHT_APP_SECRET, STREAM_LANGUAGE
 
 def get_streams(max_streams = 500, language = STREAM_LANGUAGE):
@@ -18,6 +18,3 @@ def get_streams(max_streams = 500, language = STREAM_LANGUAGE):
 
 def filter_low_view_streams(data, min_view_count = MIN_VIEW_COUNT):
     return list(filter(lambda x : x["viewer_count"] <= min_view_count, data))
-
-
-
