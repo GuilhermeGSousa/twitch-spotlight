@@ -43,8 +43,3 @@ python manage.py runserver
 ```
 
 If using VSCode launch settings are available for making migrations, migrating and running the server.
-
-## Changing the stream language
-
-Currently the server will look for portuguese streamers, but the language chosen (and other settings) can be defined on [the app settings file](twitchsearch/settings.py).
-
