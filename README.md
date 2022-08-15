@@ -1,10 +1,10 @@
-# Mini Stream
+# Twitch Spotlight
 
 Currently 95% of streamers on Twitch have 5 viewers or less. As 5% of streamers have most of the audience, this project aims to change that by giving more exposure to small streamers!
 
-Mini Stream is a concept created by superjp, on a web app call [petitstream.com](https://petitstream.com/) (for french streamers). The idea is simple:
+Twitch Spotligh is a concept first created by superjp, on a web app called [petitstream.com](https://petitstream.com/) (for french streamers). The idea is simple:
 - A random streamer that has 5 viewers or less is chosen and displayed on the website.
-- Every 5 minutes a new stream starts, choosing a new random mini stream!
+- Every 5 minutes a new stream starts, choosing a new random streamer!
 
 
 This project provides a django server that allows you to setup such a web app for any language.
