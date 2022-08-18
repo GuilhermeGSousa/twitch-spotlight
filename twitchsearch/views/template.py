@@ -1,9 +1,11 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 
-from ._internal import stream_internal
 from ..settings import MIN_TO_NEW_STREAM
+from ._internal import stream_internal
 
-def language(request):
+
+def language(request : HttpRequest):
 
     return render(
         request,
@@ -11,7 +13,7 @@ def language(request):
         {}
     )
 
-def stream(request, language):
+def stream(request : HttpRequest, language : str):
 
     data = {
         'stream_data' : stream_internal(language),

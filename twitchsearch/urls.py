@@ -7,5 +7,5 @@ app_name = 'twitchsearch'
 urlpatterns = [
     path('', template.language, name='language'),
     path('<str:language>/', template.stream, name='stream'),
-    path('api/stream/<str:language>/', rest.stream)
+    path('api/stream/', rest.stream)
 ]
