@@ -1,4 +1,5 @@
 Django==4.1
 twitchAPI==2.5.7.1
-django-heroku
-gunicorn
+django-heroku==0.3.1
+gunicorn==20.1.0
+djangorestframework==3.13.1

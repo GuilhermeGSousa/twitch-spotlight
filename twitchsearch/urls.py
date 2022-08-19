@@ -1,9 +1,11 @@
 from django.urls import path
-from . import views
+
+from .views import rest
+from .views import template
 
 app_name = 'twitchsearch'
 urlpatterns = [
-    path('', views.language, name='language'),
-    path('<str:language>/', views.stream, name='stream'),
-
+    path('', template.language, name='language'),
+    path('<str:language>/', template.stream, name='stream'),
+    path('api/stream/', rest.stream)
 ]
