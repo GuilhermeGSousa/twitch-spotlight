@@ -45,7 +45,7 @@
     const minutes = parseInt(diff / (1000 * 60) % 60);
     const seconds = parseInt(Math.abs(diff) / (1000) % 60);
     if (minutes == 0 && seconds <= 30) parent.classList.add('text-danger')
-    else parent.classList.remove('text-primary')
+    else parent.classList.remove('text-danger')
     span.textContent = ("0" + minutes) + ":" + ("0" + seconds).substr(-2);
   }
 
