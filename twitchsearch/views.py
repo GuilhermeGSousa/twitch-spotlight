@@ -6,41 +6,32 @@ from django.http import Http404
 
 from .models import StreamData
 from .twitch import filter_low_view_streams, get_streams
-from .settings import MIN_TO_NEW_STREAM, MAX_STREAM_SEARCH_COUNT
+from .settings import MIN_TO_NEW_STREAM, MAX_STREAM_SEARCH_COUNT, SUPPORTED_LANGUAGES
 
-def language(request):
+def stream(request, language = 'pt'):
+
+    ordered_objects = StreamData.objects.all().filter(language=language).order_by("-start_time")
+    chosen_stream = _get_new_stream(language) if len(ordered_objects) == 0 else _update_stream(ordered_objects, language)
 
     return render(
         request,
-        'twitchsearch/language.html',
+        'twitchsearch/index.html',
         {
-            
-        }
-    )
-
-def stream(request, language):
-    
-    ordered_objects = StreamData.objects.all().filter(language=language).order_by("-start_time")
-
-    chosen_stream = _get_new_stream(language) if len(ordered_objects) == 0 else _update_stream(ordered_objects, language)
-    
-    return render(
-        request, 
-        'twitchsearch/index.html', 
-        {
+            'language_list' : SUPPORTED_LANGUAGES,
+            'language' : language,
             'stream_data' : chosen_stream,
-            'time_to_update' : MIN_TO_NEW_STREAM
+            'time_to_update' : MIN_TO_NEW_STREAM if (chosen_stream != None) else 0
         })
 
 def _get_new_stream(language):
-    
+
     data = filter_low_view_streams(get_streams(max_streams=MAX_STREAM_SEARCH_COUNT, language=language))
 
     # Get random one not in database
 
     # TODO : Sometimes, MAX_STREAM_SEARCH_COUNT is not large enough to find streams under 5 viewers (namely for english languages)
     # Fix that situation
-    if len(data) == 0 : raise Http404("No stream found")
+    if len(data) == 0 : return None
 
     stream = StreamData(
         streamer_name=data[random.randrange(0, len(data))]['user_name'],

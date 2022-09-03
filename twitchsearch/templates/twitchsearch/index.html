@@ -1,16 +1,38 @@
 {% extends 'index.html' %}
 
+{% block insidetitle %} {{ language|upper }}{% endblock %}
+
 {% block content %}
 
 <div class="row">
   <div class="col-sm-2 p-5">
-    <h1 id="clock-parent" class="fw-bold text-center">
-      <i class="bi bi-stopwatch"></i>
-      <span id="clock">00:00</span>
-    </h1>
+    <div class="row">
+      <h1 id="clock-parent" class="fw-bold text-center">
+        <i class="bi bi-stopwatch"></i>
+        <span id="{% if time_to_update != 0 %}clock{% endif %}">00:00</span>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="dropdown align-center text-center">
+        <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-translate"></i>
+          Language {{ language|upper }}
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          {% for k, v in language_list.items %}
+          <li><a class="dropdown-item" href="{% url 'twitchsearch:stream' k %}">{{ v }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
   <div class="col-sm-10 vh-100 p-5">
+    {% if stream_data == None %}
+    <h1>No stream found</h1>
+    {% else %}
     <span id="twitch-embed"></span>
+    {% endif %}
   </div>
 </div>
 
