@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'twitchsearch'
 urlpatterns = [
-    path('', views.language, name='language'),
+    path('', views.stream, name='stream'),
     path('<str:language>/', views.stream, name='stream'),
 
 ]
